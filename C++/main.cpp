@@ -7,52 +7,6 @@
 #include <fstream>
 #include <cmath>
 
-class PPMImage 
-{
-	private:
-		int _width;
-		int _height;
-		std::vector<int> _values;
-	public:
-		PPMImage(int width, int height, int* values);
-		void exportImage(std::string path);
-};
-
-PPMImage::PPMImage(int width, int height, int* values)
-{
-	_width = width * 100;
-	_height = height * 100;
-	_values.insert(_values.end(), &values[0], &values[width * height]);
-}
-
-void PPMImage::exportImage(std::string path)
-{
-	std::ofstream outFile;
-	outFile.open(path);
-
-	if(!outFile.is_open())
-	{
-		std::cout << "File " << path << " could not be opened" << std::endl;
-		return;
-	}
-
-	outFile << "P1" << std::endl;
-	outFile << _height << " " << _width << std::endl;
-	for (int i = 0; i < _height; i++)
-	{
-		for (int j = 0; j < _width; j++)
-		{
-			int i_scale = floor(i / 100);
-			int j_scale = floor(j / 100);
-			int idx = i_scale * (_width / 100) + j_scale;
-			outFile << _values[idx];
-		}
-		outFile << std::endl;
-	}
-	outFile.close();
-
-}
-
 int main(int argc, char **argv)
 {
 	const int rows = 100;
@@ -60,7 +14,7 @@ int main(int argc, char **argv)
 	const int outImgScale = 10;
 	const int _width = cols * outImgScale;
 	const int _height = rows * outImgScale;
-	const int numIter = 10;
+	const int numIter = 300;
 	std::vector<int*> states;
 
 	for(int i = 0; i < numIter + 1; i++)
@@ -69,10 +23,19 @@ int main(int argc, char **argv)
 		states.push_back(grid);
 	}
 
-	//Initializing state to alternating 0 and 1;
-	for(int i = 0; i < rows * cols; i++)
+	std::ifstream inFile;
+	inFile.open("../start.txt");
+
+	for (int i = 0; i < rows; i++)
 	{
-		states[0][i] = rand() % 2;
+		for (int j = 0; j < cols; j++)
+		{
+			int val = 0;
+			inFile >> val;
+			val = val > 0 ? 1 : 0;
+			int idx = i * cols + j;
+			states[0][idx] = val;
+		}
 	}
 
 	for(int iter = 1; iter < numIter + 1; iter++)
