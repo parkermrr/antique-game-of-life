@@ -44,7 +44,7 @@ def save_states(states, out_dir="out/"):
             np.savetxt(f, state, fmt='%d')
             f.write("\n")
 
-def game_of_life(file_path, num_iter=300, rows=100, cols=100):
+def game_of_life(file_path, num_iter=2000, rows=100, cols=100):
     states = []
     grid = read_initial_state(file_path, rows, cols)
     states.append(grid.copy())
@@ -57,4 +57,4 @@ def game_of_life(file_path, num_iter=300, rows=100, cols=100):
 
 
 if __name__ == "__main__":
-    game_of_life("/Users/ericli/PycharmProjects/pythonProject/antique-game-of-life/start.txt", num_iter=300, rows=100, cols=100)
+    game_of_life("../start.txt", num_iter=2000, rows=100, cols=100)

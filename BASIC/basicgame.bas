@@ -1,6 +1,6 @@
 DIM SHARED grid(100, 100) AS INTEGER
 DIM SHARED new_grid(100, 100) AS INTEGER
-DIM SHARED states(300, 100, 100) AS INTEGER
+DIM SHARED states(2000, 100, 100) AS INTEGER
 
 SUB read_initial_state(file_path AS STRING, rows AS INTEGER, cols AS INTEGER)
     DIM i AS INTEGER, j AS INTEGER
@@ -84,7 +84,7 @@ DIM rows AS INTEGER
 DIM cols AS INTEGER
 
 file_path = "./antique-game-of-life/start.txt"
-num_iter = 300
+num_iter = 2000
 rows = 100
 cols = 100
 
