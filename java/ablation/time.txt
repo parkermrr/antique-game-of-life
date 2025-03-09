@@ -1,0 +1,30 @@
+Vanillla(default run): 
+real	0m0.899s
+user	0m1.264s
+sys	0m0.222s
+
+-Xint: 
+    Runs the application in interpreted-only mode. Compilation to native code is disabled, and all bytecode is executed by the interpreter. The performance benefits offered by the just-in-time (JIT) compiler aren't present in this mode.
+real	1m0.095s
+user	0m59.962s
+sys	0m0.152s
+
+-Xnoclassgc: 
+    Disables garbage collection (GC) of classes
+real	0m0.915s
+user	0m1.303s
+sys	0m0.200s
+
+-XX:+UseSerialGC
+    Enables the use of the serial garbage collector. This is generally the best choice for small and simple applications that don't require any special functionality from garbage collection. By default, this option is disabled and the default collector is used. 
+real	0m0.809s
+user	0m1.128s
+sys	0m0.121s
+
+-XX:+AlwaysPreTouch -Xms4m -Xmx4m 
+    Requests the VM to touch every page on the Java heap after requesting it from the operating system and before handing memory out to the application. By default, this option is disabled and all pages are committed as the application uses the heap space. 
+    Limited heap size to 4MBytes. Small heap size ressults in more frequent GC cycles, leading to higher CPU usage and potential performance slowdowns.
+    
+real	0m5.764s
+user	0m7.007s
+sys	0m1.016s
