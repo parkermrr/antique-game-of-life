@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 	const int outImgScale = 10;
 	const int _width = cols * outImgScale;
 	const int _height = rows * outImgScale;
-	const int numIter = 300;
+	const int numIter = 10000;
 	std::vector<int*> states;
 
 	for(int i = 0; i < numIter + 1; i++)
@@ -59,33 +59,33 @@ int main(int argc, char **argv)
 		}
 	}
 
-	for(int iter = 0; iter < states.size(); iter++)
-	{
-		std::string path = "out/" + std::to_string(iter) + ".ppm";
-		std::ofstream outFile;
-		outFile.open(path);
+	// for(int iter = 0; iter < states.size(); iter++)
+	// {
+	// 	std::string path = "out/" + std::to_string(iter) + ".ppm";
+	// 	std::ofstream outFile;
+	// 	outFile.open(path);
 
-		if(!outFile.is_open())
-		{
-			std::cout << "File " << path << " could not be opened" << std::endl;
-			return 1;
-		}
+	// 	if(!outFile.is_open())
+	// 	{
+	// 		std::cout << "File " << path << " could not be opened" << std::endl;
+	// 		return 1;
+	// 	}
 
-		outFile << "P1" << std::endl;
-		outFile << _height << " " << _width << std::endl;
-		for (int i = 0; i < _height; i++)
-		{
-			for (int j = 0; j < _width; j++)
-			{
-				int i_scale = floor(i / outImgScale);
-				int j_scale = floor(j / outImgScale);
-				int idx = i_scale * (_width / outImgScale) + j_scale;
-				outFile << states[iter][idx];
-			}
-			outFile << std::endl;
-		}
-		outFile.close();
-	}
+	// 	outFile << "P1" << std::endl;
+	// 	outFile << _height << " " << _width << std::endl;
+	// 	for (int i = 0; i < _height; i++)
+	// 	{
+	// 		for (int j = 0; j < _width; j++)
+	// 		{
+	// 			int i_scale = floor(i / outImgScale);
+	// 			int j_scale = floor(j / outImgScale);
+	// 			int idx = i_scale * (_width / outImgScale) + j_scale;
+	// 			outFile << states[iter][idx];
+	// 		}
+	// 		outFile << std::endl;
+	// 	}
+	// 	outFile.close();
+	// }
 
 	return 0;
 }
