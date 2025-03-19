@@ -44,7 +44,7 @@ sudo ./install.sh -i
 ```
 #### Verify installation
 ```
-fbc -V
+fbc --version
 ```
 
 #### Code and run
