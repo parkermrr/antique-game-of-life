@@ -3,7 +3,7 @@
         ENVIRONMENT DIVISION.
         INPUT-OUTPUT SECTION.
         FILE-CONTROL.
-                SELECT INPUT-FILE ASSIGN TO "../test.txt"
+                SELECT INPUT-FILE ASSIGN TO "../start.txt"
                         ORGANIZATION IS LINE SEQUENTIAL.
         DATA DIVISION.
                 FILE SECTION.
