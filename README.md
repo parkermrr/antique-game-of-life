@@ -25,4 +25,35 @@ The initial pattern constitutes the seed of the system. The first generation is 
                 
 ![Patterns in Game Of Life](pics/4life2.png)
 
+# Installation
+Installation for the programming environment of antique languages is not easy. We will specify below. 
+## BASIC
+Utilize the [FreeBASIC](https://sourceforge.net/projects/fbc/files/FreeBASIC-1.10.1/) tool. Notice that it cannot be used in MacOS system and your best choice is Unix. Installation to Ununtu 22.04 is specified:
+#### Download the cooresponding package:
+```
+wget http://downloads.sourceforge.net/fbc/FreeBASIC-1.10.1-ubuntu-22.04-x86_64.tar.gz?download
+```
+
+#### Unpackage
+```
+tar -xvzf FreeBASIC-1.10.1-ubuntu-22.04-x86_64.tar.gz
+```
+
+#### Install 
+```
+cd FreeBASIC-1.10.1-ubuntu-22.04-x86_64 
+sudo ./install.sh
+```
+#### Verify installation
+```
+fbc -V
+```
+
+#### Code and run
+```
+nano example.bas #add code in the editer
+fbc example.bas
+./example
+```
+
 
