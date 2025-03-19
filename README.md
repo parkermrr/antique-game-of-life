@@ -30,19 +30,17 @@ Installation for the programming environment of antique languages is not easy. W
 ## BASIC
 Utilize the [FreeBASIC](https://sourceforge.net/projects/fbc/files/FreeBASIC-1.10.1/) tool. Notice that it cannot be used in MacOS system and your best choice is Unix. Installation to Ununtu 22.04 is specified:
 #### Download the cooresponding package:
-```
-wget http://downloads.sourceforge.net/fbc/FreeBASIC-1.10.1-ubuntu-22.04-x86_64.tar.gz?download
-```
+Go to this web page to download [FreeBASIC-1.10.1-ubuntu-22.04-x86_64.tar.gz](http://downloads.sourceforge.net/fbc/FreeBASIC-1.10.1-ubuntu-22.04-x86_64.tar.gz?download). 
 
 #### Unpackage
 ```
-tar -xvzf FreeBASIC-1.10.1-ubuntu-22.04-x86_64.tar.gz
+tar -xf FreeBASIC-1.10.1-ubuntu-22.04-x86_64.tar
 ```
 
 #### Install 
 ```
 cd FreeBASIC-1.10.1-ubuntu-22.04-x86_64 
-sudo ./install.sh
+sudo ./install.sh -i
 ```
 #### Verify installation
 ```
