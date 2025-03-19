@@ -55,5 +55,16 @@ nano example.bas #add code in the editer
 fbc example.bas
 ./example
 ```
+## COBOL
+The gnuCOBOL project is the easiest way to get COBOL up an running on Linux or macOS:
+#### Install gnu-cobol:
+```
+sudo apt install gnu-cobol
+```
 
+#### Compile and run
+```
+cobc -x game_of_life.cbl -free
+./game_of_life
+```
 
