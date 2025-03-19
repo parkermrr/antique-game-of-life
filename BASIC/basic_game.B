@@ -1,0 +1,41 @@
+10 OPEN "/Users/ericli/PycharmProjects/pythonProject/antique-game-of-life/start.txt" FOR INPUT AS #1
+20 DIM GRID(100, 100), NEWGRID(100, 100)
+30 FOR I = 0 TO 99
+40   FOR J = 0 TO 99
+50     INPUT #1, GRID(I, J)
+60   NEXT J
+70 NEXT I
+80 CLOSE #1
+
+90 OPEN "out/record.txt" FOR OUTPUT AS #2
+100 FOR ITER = 0 TO 300
+110   FOR I = 0 TO 99
+120     FOR J = 0 TO 99
+130       SUM = 0
+140       FOR DI = -1 TO 1
+150         FOR DJ = -1 TO 1
+160           IF DI = 0 AND DJ = 0 THEN GOTO 180
+170           SUM = SUM + GRID((I + DI + 100) MOD 100, (J + DJ + 100) MOD 100)
+180         NEXT DJ
+190       NEXT DI
+200       IF GRID(I, J) = 1 AND (SUM = 2 OR SUM = 3) THEN NEWGRID(I, J) = 1 ELSE IF GRID(I, J) = 0 AND SUM = 3 THEN NEWGRID(I, J) = 1 ELSE NEWGRID(I, J) = 0
+210     NEXT J
+220   NEXT I
+230
+240   FOR I = 0 TO 99
+250     FOR J = 0 TO 99
+260       PRINT #2, NEWGRID(I, J);
+270     NEXT J
+280     PRINT #2, ""
+290   NEXT I
+300   PRINT #2, ""
+310
+320   FOR I = 0 TO 99
+330     FOR J = 0 TO 99
+340       GRID(I, J) = NEWGRID(I, J)
+350     NEXT J
+360   NEXT I
+370 NEXT ITER
+
+380 CLOSE #2
+390 END
